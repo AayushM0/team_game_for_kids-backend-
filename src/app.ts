@@ -34,6 +34,16 @@ app.get('/health', (req: Request, res: Response) => {
   });
 });
 
+// API Health check
+app.get('/api/health', (req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'ok',
+    service: 'ride-app-backend',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+});
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/driver', driverRoutes);
